@@ -1,0 +1,84 @@
+# Site settings
+title: Modern Living Blog
+description: Ideas and inspiration for modern living spaces
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+permalink: /:categories/:title/
+paginate: 10
+paginate_path: "/page/:num/"
+
+# Collections
+collections:
+  categories:
+    output: true
+    permalink: /category/:name/
+  tags:
+    output: true
+    permalink: /tag/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: false
+  - scope:
+      path: ""
+      type: "categories"
+    values:
+      layout: "category"
+  - scope:
+      path: ""
+      type: "tags"
+    values:
+      layout: "tag"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-minifier
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md
+
+# Jekyll SEO Tag
+twitter:
+  username: yourusername
+  card: summary_large_image
+logo: /assets/images/logo.png
+social:
+  name: Your Name
+  links:
+    - https://twitter.com/yourusername
+    - https://www.facebook.com/yourpage
+    - https://www.instagram.com/yourusername
+
+# Compression settings
+jekyll-minifier:
+  compress_css: true
+  compress_javascript: true
+  compress_json: true
+  compress_html: true
+  html_minifier_options:
+    remove_comments: true
+    remove_empty_elements: false
+    remove_empty_attributes: true
+    collapse_whitespace: true

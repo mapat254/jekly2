@@ -1,0 +1,12 @@
+{
+  "name": "jekyll-cloudflare-blog",
+  "version": "1.0.0",
+  "description": "Fast responsive Jekyll blog optimized for Cloudflare",
+  "scripts": {
+    "dev": "bundle exec jekyll serve --livereload",
+    "build": "JEKYLL_ENV=production bundle exec jekyll build",
+    "deploy": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,66 @@
+---
+layout: default
+permalink: /404.html
+---
+
+<div class="not-found-page">
+  <div class="not-found-container">
+    <h1 class="not-found-title">404</h1>
+    <h2 class="not-found-subtitle">Page Not Found</h2>
+    <p class="not-found-description">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+    <a href="{{ site.baseurl }}/" class="not-found-button">Go to Homepage</a>
+  </div>
+</div>
+
+<style>
+  .not-found-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: var(--spacing-8);
+  }
+  
+  .not-found-container {
+    max-width: 600px;
+  }
+  
+  .not-found-title {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .not-found-subtitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .not-found-description {
+    font-size: 1.125rem;
+    color: var(--text-color-light);
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .not-found-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 500;
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: var(--radius-md);
+    transition: var(--transition-base);
+  }
+  
+  .not-found-button:hover {
+    background-color: var(--color-primary-dark);
+    color: white;
+    transform: translateY(-2px);
+  }
+</style>
