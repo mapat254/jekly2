@@ -1,0 +1,27 @@
+<article class="post-card">
+  <a href="{{ include.post.url | relative_url }}" class="post-card-link">
+    {% if include.post.image %}
+      <div class="post-card-image">
+        <img data-src="{{ include.post.image }}" alt="{{ include.post.title }}" class="lazy">
+      </div>
+    {% endif %}
+    
+    <div class="post-card-content">
+      <div class="post-card-categories">
+        {% for category in include.post.categories %}
+          <span class="post-card-category">{{ category }}</span>
+        {% endfor %}
+      </div>
+      
+      <h2 class="post-card-title">{{ include.post.title }}</h2>
+      
+      <p class="post-card-excerpt">{{ include.post.description | truncate: 120 }}</p>
+      
+      <div class="post-card-meta">
+        <time datetime="{{ include.post.date | date_to_xmlschema }}">
+          {{ include.post.date | date: "%B %-d, %Y" }}
+        </time>
+      </div>
+    </div>
+  </a>
+</article>

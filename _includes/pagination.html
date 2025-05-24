@@ -1,0 +1,65 @@
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Previous
+    </a>
+  {% else %}
+    <span class="pagination-prev disabled">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Previous
+    </span>
+  {% endif %}
+  
+  <div class="pagination-numbers">
+    {% assign start_page = paginator.page | minus: 2 %}
+    {% if start_page < 1 %}
+      {% assign start_page = 1 %}
+    {% endif %}
+    
+    {% assign end_page = start_page | plus: 4 %}
+    {% if end_page > paginator.total_pages %}
+      {% assign end_page = paginator.total_pages %}
+      {% assign start_page = end_page | minus: 4 %}
+      {% if start_page < 1 %}
+        {% assign start_page = 1 %}
+      {% endif %}
+    {% endif %}
+    
+    {% if start_page > 1 %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', '1' }}" class="pagination-number">1</a>
+      {% if start_page > 2 %}
+        <span class="pagination-ellipsis">&hellip;</span>
+      {% endif %}
+    {% endif %}
+    
+    {% for page in (start_page..end_page) %}
+      {% if page == paginator.page %}
+        <span class="pagination-number current">{{ page }}</span>
+      {% else %}
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-number">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+    
+    {% if end_page < paginator.total_pages %}
+      {% if end_page < paginator.total_pages | minus: 1 %}
+        <span class="pagination-ellipsis">&hellip;</span>
+      {% endif %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', paginator.total_pages }}" class="pagination-number">{{ paginator.total_pages }}</a>
+    {% endif %}
+  </div>
+  
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-next">
+      Next
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+  {% else %}
+    <span class="pagination-next disabled">
+      Next
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </span>
+  {% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="tag-page">
+  <header class="tag-header">
+    <h1 class="tag-title">#{{ page.title }}</h1>
+    <p class="tag-description">Browse all posts tagged with #{{ page.title }}</p>
+  </header>
+  
+  <div class="posts-grid">
+    {% assign tag_posts = site.tags[page.title] %}
+    {% for post in tag_posts %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+  
+  <div class="tag-footer">
+    <a href="{{ site.baseurl }}/" class="back-link">← Back to all posts</a>
+  </div>
+</div>
